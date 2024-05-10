@@ -5,10 +5,10 @@
 
 using namespace std;
 
-#define FONT16 &fonts::efontCN_16_b
+#define FONT16 &fonts::efontCN_16
 
 long check1s = 0;
-long check5ms = 0;
+long check300ms = 0;
 long check5min = 0;
 
 static LGFX_Sprite spTime(&tft);
@@ -27,7 +27,7 @@ inline void create_draw_sprites() {
 inline void showClientIP() {
   sprintf(buf, "IP: %s", WiFi.localIP().toString().c_str());
   tft.setColor(TFT_WHITE);
-  tft.drawRightString(buf, screenWidth - 10, screenHeight - 26, FONT16);
+  tft.drawRightString(buf, TFT_WIDTH - 10, TFT_HEIGHT - 26, FONT16);
 }
 
 inline void showCurrentTime() {
@@ -75,10 +75,13 @@ void setup() {
 
 void loop() {
   auto ms = millis();
+  if (ms - check300ms > 300) {
+    check300ms = ms;
+    showCurrentTime();
+  }
   if (ms - check1s > 1000) {
     check1s = ms;
     ArduinoOTA.handle();
-    showCurrentTime();
   }
   if (ms - check5min > 5 * 60 * 1000) {
     check5min = ms;

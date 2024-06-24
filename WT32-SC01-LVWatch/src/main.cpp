@@ -61,9 +61,19 @@ inline void showCurrentTime() {
   lv_img_set_angle(img_second, info.tm_sec * 6 * 10);
 }
 
+inline void init_display() {
+  tft.init();
+  tft.initDMA();
+  tft.setRotation(1);
+  tft.setBrightness(10);
+  lv_init();
+  lv_disp_init();
+  lv_touch_init();
+}
+
 void setup() {
   Serial.begin(115200);
-  init_wt32_lvgl();
+  init_display();
   ui_init();
   show_center_msg("Please Config WiFi With ESP-Touch!");
   autoConfigWifi();

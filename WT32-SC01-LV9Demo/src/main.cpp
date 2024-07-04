@@ -12,9 +12,8 @@ static LGFX tft;
 #define LV_DISP_HOR_RES 480
 #define LV_DISP_VER_RES 320
 
-static const uint32_t buf_size = LV_DISP_HOR_RES * 14;
+static const uint32_t buf_size = LV_DISP_HOR_RES * 10;
 static lv_color_t dis_buf1[buf_size];
-static lv_color_t dis_buf2[buf_size];
 
 void inline lv_disp_init() {
   auto *disp = lv_display_create(LV_DISP_HOR_RES, LV_DISP_VER_RES);
@@ -24,12 +23,11 @@ void inline lv_disp_init() {
     auto dat = (lgfx::rgb565_t *)px_map;
     tft.setAddrWindow(area->x1, area->y1, w, h);
     tft.pushPixelsDMA(dat, w * h);
-    // tft.pushImageDMA(area->x1, area->y1, w, h, dat);
     lv_display_flush_ready(disp);
   };
   lv_display_set_flush_cb(disp, f_disp);
   auto mode = LV_DISPLAY_RENDER_MODE_PARTIAL;
-  lv_display_set_buffers(disp, dis_buf1, dis_buf2, buf_size, mode);
+  lv_display_set_buffers(disp, dis_buf1, nullptr, buf_size, mode);
 }
 
 void inline lv_touch_init() {

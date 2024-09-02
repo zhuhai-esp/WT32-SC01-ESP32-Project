@@ -13,7 +13,7 @@
 
 LGFX tft;
 
-static const uint32_t buf_size = LV_DISP_HOR_RES * 10;
+static const uint32_t buf_size = LV_DISP_HOR_RES * 20;
 static lv_color_t dis_buf1[buf_size];
 
 void inline lv_disp_init() {

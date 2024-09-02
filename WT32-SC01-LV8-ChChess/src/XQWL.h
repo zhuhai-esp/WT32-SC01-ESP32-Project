@@ -58,7 +58,7 @@ const int HIS_SIZE = 2048;
 const int BOOK_SIZE = 600;   // 开局库大小
 
 // 判断棋子是否在棋盘中的数组
-static const char PROGMEM ccInBoard[256] = {
+static const int8_t PROGMEM ccInBoard[256] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -78,7 +78,7 @@ static const char PROGMEM ccInBoard[256] = {
 };
 
 // 判断棋子是否在九宫的数组
-static const char PROGMEM ccInFort[256] = {
+static const int8_t PROGMEM ccInFort[256] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -98,7 +98,7 @@ static const char PROGMEM ccInFort[256] = {
 };
 
 // 判断步长是否符合特定走法的数组，1=帅(将)，2=仕(士)，3=相(象)
-static const char PROGMEM ccLegalSpan[512] = {
+static const int8_t PROGMEM ccLegalSpan[512] = {
         0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

@@ -120,7 +120,9 @@ static void ResponseMove() {
     int vlRep;
     // 电脑走一步棋
     //SetCursor((HCURSOR) LoadImage(NULL, IDC_WAIT, IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+    //printf("->SearchMain[%u]\n", clock());
     SearchMain();
+    //printf("<-SearchMain[%u]\n", clock());
     //SetCursor((HCURSOR) LoadImage(NULL, IDC_ARROW, IMAGE_CURSOR, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
     pos.MakeMove(Search.mvResult);
     // 清除上一步棋的选择标记

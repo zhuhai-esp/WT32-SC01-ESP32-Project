@@ -12,8 +12,9 @@ static LGFX tft;
 #define LV_DISP_HOR_RES 480
 #define LV_DISP_VER_RES 320
 
-static const uint32_t buf_size = LV_DISP_HOR_RES * 10;
-static lv_color_t dis_buf1[buf_size];
+static const uint32_t buf_size =
+    LV_DISP_HOR_RES * LV_DISP_VER_RES * sizeof(lv_color_t);
+static lv_color_t *dis_buf1;
 
 void inline lv_disp_init() {
   auto *disp = lv_display_create(LV_DISP_HOR_RES, LV_DISP_VER_RES);
@@ -27,6 +28,7 @@ void inline lv_disp_init() {
   };
   lv_display_set_flush_cb(disp, f_disp);
   auto mode = LV_DISPLAY_RENDER_MODE_PARTIAL;
+  dis_buf1 = (lv_color_t *)ps_malloc(buf_size);
   lv_display_set_buffers(disp, dis_buf1, nullptr, buf_size, mode);
 }
 
